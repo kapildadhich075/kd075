@@ -1,86 +1,55 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Link from 'next/link';
+import About from './Components/About';
+import Contact from './Components/Contact';
+import Header from './Components/Header';
+import Hero from './Components/Hero';
+import Projects from './Components/Projects';
+import Skills from './Components/Skills';
+import WorkExperience from './Components/WorkExperience';
 
-const Home: NextPage = () => {
+const index: NextPage = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
-
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="rounded-md bg-gray-100 p-3 font-mono text-lg">
-            pages/index.tsx
-          </code>
-        </p>
-
-        <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and its API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className="flex h-24 w-full items-center justify-center border-t">
-        <a
-          className="flex items-center justify-center gap-2"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </a>
-      </footer>
-    </div>
+    <>
+      <div className=' bg-[#1B1A17] text-white h-screen snap-y snap-mandatory overflow-y-scroll 
+      overflow-x-hidden z-0 font-Poppins'>
+        <Head>
+          <title>Kapil Dadhich</title>
+          <meta name="description" content="Kapil Dadhich's Portfolio" />
+          <link rel="icon" href="/bitmoji.png" />
+        </Head>
+        <Header />
+        <section id='hero' className=' snap-start'>
+          <Hero />
+        </section>
+        <section id='about' className='snap-center'>
+          <About />
+        </section>
+        <section id='experience' className='snap-center'>
+          <WorkExperience />
+        </section>
+        <section id='Skills' className='snap-start'>
+          <Skills />
+        </section>
+        <section id="projects" className='snap-start'>
+          <Projects />
+        </section>
+        <section id='contact' className='snap-start'>
+          <Contact />
+        </section>
+        <Link href='#hero'>
+          <footer className=' sticky bottom-5 w-full cursor-pointer'>
+            <div className=' flex items-center justify-center'>
+            <img src='/bitmoji.png' alt='bitmoji' className='w-10 h-10 
+            rounded-full filter grayscale hover:grayscale-0 cursor-pointer
+            ' />
+            </div>
+          </footer>
+          </Link>
+      </div>
+    </>
   )
 }
 
-export default Home
+export default index
