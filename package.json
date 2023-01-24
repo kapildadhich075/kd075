@@ -3,12 +3,17 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "export": "next export"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.6",
+    "@portabletext/react": "^2.0.0",
+    "@sanity/image-url": "^1.0.1",
+    "cross-env": "^7.0.3",
     "framer-motion": "^8.4.2",
     "next": "latest",
+    "next-sanity": "^4.0.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.42.0",

@@ -1,10 +1,13 @@
 import { motion } from 'framer-motion'
 import React from 'react'
+import { urlFor } from '../../sanity'
+import { Project } from '../../typings'
 
-type Props = {}
+type Props = {
+    projects: Project[]
+}
 
-export default function Projects({ }: Props) {
-    const projects = [1, 2, 3]
+export default function Projects({ projects }: Props) {
     return (
         <div className=' h-screen relative flex overflow-hidden flex-col text-left md:flex-row max-w-full
         justify-evenly mx-auto items-center z-0
@@ -14,20 +17,30 @@ export default function Projects({ }: Props) {
             </h3>
             <div className=' relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20
             '>
-                {projects.map((project) =>  (
-                    <div className=' w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen' key='1'>
-                        <motion.img src='/newsdaily.jpg' alt='drawer' className=' w-40 h-100' 
+                {projects?.map((project, i) =>  (
+                    <div className=' w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen' key={project._id}>
+                      {
+                        project?.image &&
+                        <motion.img src= {urlFor(project?.image).url()} alt='drawer' className=' w-40 h-100' 
                         initial={{ y:-300,opacity: 0 }}
                         transition={{ duration: 1.2 }}
                         whileInView={{ opacity: 1, y:0 }}
                         viewport={{once: true}}
                         />
+                      }
                         <div className='space-y-10 px-0 md:px-10 max-w-6xl'>
-                        <h4 className=' text-4xl font-semibold text-center'><span>News Daily App</span></h4>
+                        <h4 className=' text-4xl font-semibold text-center'><span>{project?.title}</span></h4>
+                        <div className='flex items-center gap-4 justify-center'>
+                        {project?.technologies?.map((technology) => (
+                            technology?.image && <img
+                                key={technology._id}
+                                className='h-10 w-10'
+                                src={urlFor(technology?.image).url()}
+                                ></img>
+                        ))}
+                        </div>
                         <p className=' text-justify text-lg text-[#F5EDCE] md:text-left'>
-                            A news app that fetches news from the newsapi.org API and displays it in a beautiful UI.
-                            It also has a dark mode. It is build using Flutter and Dart and uses the provider package for state management and the http package for
-                            fetching data from the API.
+                            {project?.summary}
                             </p>
                         </div>
                     </div>
